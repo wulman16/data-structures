@@ -104,6 +104,19 @@ class SinglyLinkedList {
     prevNode.next = newNode;
     newNode.next = nextNode;
     this.length++;
-    return this;
+    return true;
+  }
+
+  remove(idx) {
+    if (idx < 0 || idx >= this.length) return false;
+    if (idx === this.length - 1) return !!this.pop();
+    if (idx === 0) return !!this.shift();
+
+    const prevNode = this.get(idx - 1);
+    const removed = prevNode.next;
+    const nextNode = removed.next;
+    prevNode.next = nextNode;
+    length--;
+    return removed;
   }
 }
