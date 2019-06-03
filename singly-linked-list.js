@@ -28,6 +28,12 @@ class SinglyLinkedList {
   pop() {
     if (!this.head) {
       return;
+    } else if (this.length === 1) {
+      currentNode = this.head;
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return currentNode;
     }
     let currentNode = this.head;
     for (let i = 1; i < this.length - 1; i++) {
