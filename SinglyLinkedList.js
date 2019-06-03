@@ -83,4 +83,13 @@ class SinglyLinkedList {
     }
     return currentNode;
   }
+
+  set(idx, val) {
+    const desiredNode = this.get(idx);
+    if (desiredNode) {
+      desiredNode.val = val;
+      return true;
+    }
+    return false;
+  }
 }
