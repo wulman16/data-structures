@@ -45,4 +45,15 @@ class SinglyLinkedList {
     this.length--;
     return lastNode;
   }
+
+  shift() {
+    if (!this.head) {
+      return;
+    } else {
+      const firstNode = this.head;
+      this.head = this.head.next;
+      length--;
+      return firstNode;
+    }
+  }
 }
