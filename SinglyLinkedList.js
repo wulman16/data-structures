@@ -12,6 +12,7 @@ class SinglyLinkedList {
     this.tail = null;
   }
 
+  // Time complexity: O(1)
   push(val) {
     const newNode = new Node(val);
     if (!this.head) {
@@ -25,6 +26,7 @@ class SinglyLinkedList {
     return this;
   }
 
+  // Time complexity: O(n)
   pop() {
     if (!this.head) {
       return;
@@ -46,6 +48,7 @@ class SinglyLinkedList {
     return lastNode;
   }
 
+  // Time complexity: O(1)
   shift() {
     if (!this.head) {
       return;
@@ -60,6 +63,7 @@ class SinglyLinkedList {
     }
   }
 
+  // Time complexity: O(1)
   unshift(val) {
     const newHead = new Node(val);
     if (!this.head) {
@@ -73,6 +77,7 @@ class SinglyLinkedList {
     return this;
   }
 
+  // Time complexity: O(n)
   get(idx) {
     if (idx < 0 || idx >= this.length) {
       return null;
@@ -84,6 +89,7 @@ class SinglyLinkedList {
     return currentNode;
   }
 
+  // Time complexity: O(n)
   set(idx, val) {
     const desiredNode = this.get(idx);
     if (desiredNode) {
@@ -93,6 +99,7 @@ class SinglyLinkedList {
     return false;
   }
 
+  // Time complexity: O(1)
   insert(idx, val) {
     if (idx < 0 || idx > this.length) return false;
     if (idx === this.length) return !!this.push(val);
@@ -107,6 +114,7 @@ class SinglyLinkedList {
     return true;
   }
 
+  // Time complexity: O(1) at beginning, O(n) otherwise
   remove(idx) {
     if (idx < 0 || idx >= this.length) return false;
     if (idx === this.length - 1) return !!this.pop();
@@ -114,9 +122,28 @@ class SinglyLinkedList {
 
     const prevNode = this.get(idx - 1);
     const removed = prevNode.next;
-    const nextNode = removed.next;
-    prevNode.next = nextNode;
+    prevNode.next = removed.next;
     length--;
     return removed;
+  }
+
+  // Time complexity: O(n)
+  reverse() {
+    if (this.length <= 1) return this;
+
+    // Swap head and tail
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let next;
+    let prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
   }
 }
