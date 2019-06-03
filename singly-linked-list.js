@@ -26,16 +26,17 @@ class SinglyLinkedList {
   }
 
   pop() {
-    if (this.length === 0) {
-      return this;
+    if (!this.head) {
+      return;
     }
     let currentNode = this.head;
     for (let i = 1; i < this.length - 1; i++) {
       currentNode = currentNode.next;
     }
+    let lastNode = currentNode.next;
     currentNode.next = null;
     this.tail = currentNode;
     this.length--;
-    return this;
+    return lastNode;
   }
 }
