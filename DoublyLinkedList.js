@@ -13,6 +13,7 @@ class DoublyLinkedList {
     this.length = 0;
   }
 
+  // Time complexity: O(1)
   push(val) {
     const newTail = new Node(val);
     if (this.length === 0) {
@@ -27,6 +28,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // Time complexity: O(1)
   pop() {
     if (this.length === 0) {
       return;
@@ -44,6 +46,7 @@ class DoublyLinkedList {
     return popped;
   }
 
+  // Time complexity: O(1)
   shift() {
     if (this.length === 0) return;
     const shifted = this.head;
@@ -59,6 +62,7 @@ class DoublyLinkedList {
     return shifted;
   }
 
+  // Time complexity: O(1)
   unshift(val) {
     const newHead = new Node(val);
     if (this.length === 0) {
@@ -73,6 +77,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // Time complexity: O(n)
   get(idx) {
     if (idx < 0 || idx >= this.length) return null;
     let currentNode;
@@ -90,6 +95,7 @@ class DoublyLinkedList {
     return currentNode;
   }
 
+  // Time complexity: O(n)
   set(idx, val) {
     const desiredNode = this.get(idx);
     if (!desiredNode) {
@@ -100,6 +106,7 @@ class DoublyLinkedList {
     }
   }
 
+  // Time complexity: O(n)
   insert(idx, val) {
     if (idx === 0) return !!this.unshift(val);
     if (idx === this.length) return !!this.push(val);
@@ -117,12 +124,13 @@ class DoublyLinkedList {
     }
   }
 
+  // Time complexity: O(n)
   remove(idx) {
     if (idx === 0) return this.shift();
     if (idx === this.length - 1) return this.pop();
     const removedNode = this.get(idx);
     if (!removedNode) {
-      return false;
+      return;
     } else {
       const prevNode = removedNode.prev;
       const nextNode = removedNode.next;
