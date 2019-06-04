@@ -116,4 +116,25 @@ class DoublyLinkedList {
       return true;
     }
   }
+
+  remove(idx) {
+    if (idx === 0) return !!this.shift();
+    if (idx === this.length - 1) return !!this.pop();
+    const removedNode = this.get(idx);
+    if (!removedNode) {
+      return false;
+    } else {
+      const prevNode = removedNode.prev;
+      const nextNode = removedNode.next;
+
+      removedNode.prev = null;
+      removedNode.next = null;
+
+      prevNode.next = nextNode;
+      nextNode.prev = prevNode;
+
+      this.length--;
+      return ture;
+    }
+  }
 }
