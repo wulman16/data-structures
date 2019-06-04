@@ -118,8 +118,8 @@ class DoublyLinkedList {
   }
 
   remove(idx) {
-    if (idx === 0) return !!this.shift();
-    if (idx === this.length - 1) return !!this.pop();
+    if (idx === 0) return this.shift();
+    if (idx === this.length - 1) return this.pop();
     const removedNode = this.get(idx);
     if (!removedNode) {
       return false;
@@ -134,7 +134,7 @@ class DoublyLinkedList {
       nextNode.prev = prevNode;
 
       this.length--;
-      return ture;
+      return removedNode;
     }
   }
 }
