@@ -78,12 +78,12 @@ class DoublyLinkedList {
     let currentNode;
     if (this.length - idx > idx) {
       currentNode = this.head;
-      for (let i = 1; i < idx - 1; i++) {
+      for (let i = 0; i < idx; i++) {
         currentNode = currentNode.next;
       }
     } else {
       currentNode = this.tail;
-      for (let i = this.length - 1; i > idx + 1; i--) {
+      for (let i = this.length - 1; i > idx; i--) {
         currentNode = currentNode.prev;
       }
     }
