@@ -12,6 +12,7 @@ class Queue {
     this.size = 0;
   }
 
+  // Time complexity: O(1)
   enqueue(val) {
     const newLast = new Node(val);
     this.size === 0 ? (this.first = newLast) : (this.last.next = newLast);
@@ -19,12 +20,13 @@ class Queue {
     return ++this.size;
   }
 
+  // Time complexity: O(1)
   dequeue() {
     if (this.size === 0) return;
     const dequeued = this.first;
     if (this.size === 1) this.last = null;
     this.first = dequeued.next;
     this.size--;
-    return dequeued;
+    return dequeued.val;
   }
 }
