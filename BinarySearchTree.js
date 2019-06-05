@@ -13,11 +13,11 @@ class BinarySearchTree {
 
   insert(val) {
     const newNode = new Node(val);
-    let currentNode = this.root;
-    if (!currentNode) {
+    if (!this.root) {
       this.root = newNode;
       return this;
     }
+    let currentNode = this.root;
     while (true) {
       if (val < currentNode.val) {
         if (currentNode.left) {
@@ -34,6 +34,7 @@ class BinarySearchTree {
           return this;
         }
       } else {
+        // The given value already exists in the tree
         return;
       }
     }
