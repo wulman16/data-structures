@@ -123,7 +123,7 @@ class SinglyLinkedList {
     const prevNode = this.get(idx - 1);
     const removed = prevNode.next;
     prevNode.next = removed.next;
-    length--;
+    this.length--;
     return removed;
   }
 
