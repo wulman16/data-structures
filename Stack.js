@@ -12,6 +12,7 @@ class Stack {
     this.size = 0;
   }
 
+  // Time complexity: O(1)
   push(val) {
     const newFirst = new Node(val);
     this.size === 0 ? (this.last = newFirst) : (newFirst.next = this.first);
@@ -19,6 +20,7 @@ class Stack {
     return ++this.size;
   }
 
+  // Time complexity: O(1)
   pop() {
     if (this.size === 0) return;
     const popped = this.first;
