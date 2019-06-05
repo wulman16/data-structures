@@ -11,6 +11,7 @@ class BinarySearchTree {
     this.root = null;
   }
 
+  // Time complexity: O(log(n))
   insert(val) {
     const newNode = new Node(val);
     if (!this.root) {
@@ -40,6 +41,7 @@ class BinarySearchTree {
     }
   }
 
+  // Time complexity: O(log(n))
   find(val) {
     if (!this.root) return null;
     let currentNode = this.root;
