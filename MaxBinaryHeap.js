@@ -35,6 +35,8 @@ class MaxBinaryHeap {
     swap(this.values, 0, this.values.length - 1);
     const max = this.values.pop();
 
+    if (this.values.length === 0) return max;
+
     let recentIdx = 0;
     let leftIdx = recentIdx * 2 + 1;
     let rightIdx = leftIdx + 1;
