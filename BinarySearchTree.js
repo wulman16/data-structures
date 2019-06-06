@@ -64,6 +64,16 @@ class BinarySearchTree {
     }
   }
 
+  // Searching algorithms
+
+  // All the search algorithms have the same time complexity of O(n)
+  // Their differences manifest in space complexity
+  // Use DFS on wide trees (fewer nodes to keep track of in the queue)
+  // Use BFS on narrow trees (also fewer nodes to keep track of)
+
+  // DFS in-order, on a BST, returns all nodes in their underlying order
+  // DFS pre-order is useful for preserving the tree's structure
+
   breadthFirstSearch() {
     if (!this.root) return [];
     const queue = [];
@@ -78,8 +88,6 @@ class BinarySearchTree {
     }
     return result;
   }
-
-  // Depth First Search algorithms
 
   DFSPreOrder() {
     if (!this.root) return [];
