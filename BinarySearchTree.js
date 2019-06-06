@@ -81,25 +81,15 @@ class BinarySearchTree {
 
   // Depth First Search algorithms
 
-  preOrderDFS() {
+  DFSPreOrder() {
     if (!this.root) return [];
     const visitedNodes = [];
-    let current = this.root;
     const traverse = node => {
       visitedNodes.push(node.val);
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
     };
-    traverse(current);
+    traverse(this.root);
     return visitedNodes;
   }
 }
-
-let tree = new BinarySearchTree();
-tree.insert(10);
-tree.insert(6);
-tree.insert(15);
-tree.insert(3);
-tree.insert(8);
-tree.insert(20);
-console.log(tree.preOrderDFS());
