@@ -104,4 +104,16 @@ class BinarySearchTree {
     traverse(this.root);
     return visitedNodes;
   }
+
+  DFSInOrder() {
+    if (!this.root) return [];
+    const visitedNodes = [];
+    const traverse = node => {
+      if (node.left) traverse(node.left);
+      visitedNodes.push(node.val);
+      if (node.right) traverse(node.right);
+    };
+    traverse(this.root);
+    return visitedNodes;
+  }
 }
