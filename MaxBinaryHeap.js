@@ -3,22 +3,15 @@ class MaxBinaryHeap {
     // Uses an array instead of a proper tree to store the nodes
     // A parent node's left child is at the parent index * 2 + 1
     // A parent node's right child is at the parent index * 2 + 2
-    // A child node's parent is at  (child index - 1) / 2 rounded down
-    this.values = [];
+    // A child node's parent is at (child index - 1) / 2, rounded down
+    this.values = [55, 39, 41, 27, 12, 18, 33];
   }
 
   insert(val) {
-    // push val into values
-    // get parent node
-    // while the parent node's index doesn't equal val's index
-    // if val is less than the parent, break
-    // else, swap val and parent
-    // set parent node to parent of where val currently is
-    // return heap
     this.values.push(val);
     let valIdx = this.values.length - 1;
     let parentIdx = Math.floor((valIdx - 1) / 2);
-    while (parentIdx >= 0) {
+    while (valIdx > 0) {
       if (val < this.values[parentIdx]) break;
       [this.values[parentIdx], this.values[valIdx]] = [
         this.values[valIdx],
@@ -28,5 +21,58 @@ class MaxBinaryHeap {
       parentIdx = Math.floor((valIdx - 1) / 2);
     }
     return this;
+  }
+
+  extractMax() {
+    const swap = (arr, i, j) => {
+      const temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    };
+
+    if (this.values.length === 0) return null;
+
+    swap(this.values, 0, this.values.length - 1);
+    const max = this.values.pop();
+
+    let recentIdx = 0;
+    let leftIdx = recentIdx * 2 + 1;
+    let rightIdx = leftIdx + 1;
+    let leftVal = this.values[leftIdx];
+    let rightVal = this.values[rightIdx];
+
+    while (leftVal) {
+      if (!rightVal) {
+        if (this.values[recentIdx] > leftVal) {
+          break;
+        } else {
+          swap(this.values, recentIdx, leftIdx);
+          break;
+        }
+      }
+      if (
+        this.values[recentIdx] > this.values[leftIdx] &&
+        this.values[recentIdx] > this.vlaues[rightIdx]
+      )
+        break;
+      if (leftVal > rightVal) {
+        [this.values[recentIdx], this.values[leftIdx]] = [
+          this.values[leftIdx],
+          this.values[recentIdx]
+        ];
+        recentIdx = leftIdx;
+      } else {
+        [this.values[recentIdx], this.values[rightIdx]] = [
+          this.values[rightIdx],
+          this.values[recentIdx]
+        ];
+        recentIdx = rightIdx;
+      }
+      leftIdx = recentIdx * 2 + 1;
+      rightIdx = leftIdx + 1;
+      leftVal = this.values[leftIdx];
+      rightVal = this.values[rightIdx];
+    }
+    return max;
   }
 }
