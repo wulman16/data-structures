@@ -15,6 +15,7 @@ class HashTable {
     return total;
   }
 
+  // Time complexity: O(1)
   set(key, value) {
     const idx = this._hash(key);
     this.keyMap[idx]
@@ -22,6 +23,7 @@ class HashTable {
       : (this.keyMap[idx] = [[key, value]]);
   }
 
+  // Time complexity: O(1)
   get(key) {
     const idx = this._hash(key);
     if (this.keyMap[idx]) {
