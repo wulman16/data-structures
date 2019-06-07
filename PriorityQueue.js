@@ -10,6 +10,7 @@ class PriorityQueue {
     this.values = [];
   }
 
+  // Time complexity: O(log(n))
   enqueue(val, priority) {
     const newNode = new Node(val, priority);
     this.values.push(newNode);
@@ -27,6 +28,7 @@ class PriorityQueue {
     return this;
   }
 
+  // Time complexity: O(log(n))
   dequeue() {
     const min = this.values[0];
     const end = this.values.pop();

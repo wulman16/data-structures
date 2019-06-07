@@ -7,6 +7,7 @@ class MaxBinaryHeap {
     this.values = [];
   }
 
+  // Time complexity: O(log(n))
   insert(val) {
     this.values.push(val);
     let valIdx = this.values.length - 1;
@@ -23,6 +24,7 @@ class MaxBinaryHeap {
     return this;
   }
 
+  // Time complexity: O(log(n))
   extractMax() {
     const swap = (arr, i, j) => {
       const temp = arr[i];
