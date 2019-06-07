@@ -3,7 +3,7 @@ class HashTable {
     this.keyMap = new Array(size);
   }
 
-  // deterministic, evenly distributed, reasonably efficient
+  // deterministic, distributes evenly, reasonably efficient
   _hash(key) {
     let total = 0;
     let WEIRD_PRIME = 31;
