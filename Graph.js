@@ -14,7 +14,14 @@
 // lacks error handling
 class Graph {
   constructor() {
-    this.adjacencyList = {};
+    this.adjacencyList = {
+      A: ["B", "C"],
+      B: ["A", "D"],
+      C: ["A", "E"],
+      D: ["B", "E", "F"],
+      E: ["C", "D", "F"],
+      F: ["D", "E"]
+    };
   }
 
   // Time complexity: O(1)
@@ -45,4 +52,23 @@ class Graph {
     }
     delete this.adjacencyList[vertex];
   }
+
+  DFSrecursive(vertex) {
+    let results = [];
+    let visited = {};
+    const DFS = vertex => {
+      if (this.adjacencyList[vertex].length === 0) return;
+      results.push(vertex);
+      visited[vertex] = true;
+      for (let neighbor of this.adjacencyList[vertex]) {
+        if (!visited[neighbor]) {
+          DFS(neighbor);
+        }
+      }
+    };
+    DFS(vertex);
+    return results;
+  }
 }
+
+let g = new Graph();
