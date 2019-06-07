@@ -13,6 +13,24 @@ class HashTable {
     }
     return total;
   }
+
+  set(key, value) {
+    const hashIdx = _hash(key);
+    this.keyMap[hashIdx]
+      ? this.keyMap[hashIdx].push([key, value])
+      : (this.keyMap[hashIdx] = [[key, value]]);
+  }
+
+  get(key) {
+    const hashIdx = _hash(key);
+    if (!this.keyMap[hashIdx]) return;
+    for (let pair of this.keyMap[hashIdx]) {
+      if (pair[0] === key) {
+        return pair;
+      }
+    }
+    return;
+  }
 }
 
 // example hash function
