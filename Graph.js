@@ -53,7 +53,7 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
-  DFSrecursive(vertex) {
+  DFSrecursive(startVertex) {
     let results = [];
     let visited = {};
     const DFS = vertex => {
@@ -66,9 +66,27 @@ class Graph {
         }
       }
     };
-    DFS(vertex);
+    DFS(startVertex);
+    return results;
+  }
+
+  DFSiterative(startVertex) {
+    const results = [];
+    // store the vertices in a stack (last in, first out)
+    let stack = [];
+    const visited = {};
+    stack.push(startVertex);
+    while (stack.length > 0) {
+      const vertex = stack.pop();
+      if (!visited[vertex]) {
+        results.push(vertex);
+        visited[vertex] = true;
+        stack = stack.concat(this.adjacencyList[vertex]);
+      }
+    }
     return results;
   }
 }
 
 let g = new Graph();
+console.log(g.DFSiterative("C"));
