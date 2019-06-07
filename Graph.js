@@ -53,7 +53,7 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
-  DFSrecursive(startVertex) {
+  DFSRecursive(startVertex) {
     let results = [];
     let visited = {};
     const DFS = vertex => {
@@ -70,14 +70,15 @@ class Graph {
     return results;
   }
 
-  DFSiterative(startVertex) {
+  DFSIterative(startVertex) {
     const results = [];
     // store the vertices in a stack (last in, first out)
-    let stack = [];
+    let stack = [startVertex];
     const visited = {};
-    stack.push(startVertex);
+    visited[startVertex] = true;
+    let vertex;
     while (stack.length > 0) {
-      const vertex = stack.pop();
+      vertex = stack.pop();
       if (!visited[vertex]) {
         results.push(vertex);
         visited[vertex] = true;
@@ -86,7 +87,24 @@ class Graph {
     }
     return results;
   }
+
+  BFSIterative(startVertex) {
+    const results = [];
+    // store the vertices in a queue (first in, first out)
+    let queue = [startVertex];
+    const visited = {};
+    let vertex;
+    while (queue.length > 0) {
+      vertex = queue.shift();
+      if (!visited[vertex]) {
+        results.push(vertex);
+        visited[vertex] = true;
+        queue = queue.concat(this.adjacencyList[vertex]);
+      }
+    }
+    return results;
+  }
 }
 
 let g = new Graph();
-console.log(g.DFSiterative("C"));
+console.log(g.BFSIterative("A"));
