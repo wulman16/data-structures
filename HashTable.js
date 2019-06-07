@@ -3,6 +3,7 @@ class HashTable {
     this.keyMap = new Array(size);
   }
 
+  // deterministic, evenly distributed, reasonably efficient
   _hash(key) {
     let total = 0;
     let WEIRD_PRIME = 31;
@@ -15,18 +16,19 @@ class HashTable {
   }
 
   set(key, value) {
-    const hashIdx = _hash(key);
-    this.keyMap[hashIdx]
-      ? this.keyMap[hashIdx].push([key, value])
-      : (this.keyMap[hashIdx] = [[key, value]]);
+    const idx = this._hash(key);
+    this.keyMap[idx]
+      ? this.keyMap[idx].push([key, value])
+      : (this.keyMap[idx] = [[key, value]]);
   }
 
   get(key) {
-    const hashIdx = _hash(key);
-    if (!this.keyMap[hashIdx]) return;
-    for (let pair of this.keyMap[hashIdx]) {
-      if (pair[0] === key) {
-        return pair;
+    const idx = this._hash(key);
+    if (this.keyMap[idx]) {
+      for (let pair of this.keyMap[idx]) {
+        if (pair[0] === key) {
+          return pair;
+        }
       }
     }
     return;
