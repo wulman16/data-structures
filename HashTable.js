@@ -33,6 +33,30 @@ class HashTable {
     }
     return;
   }
+
+  keys() {
+    let keys = [];
+    for (let idx of this.keyMap) {
+      if (idx) {
+        for (let pair of idx) {
+          keys.push(pair[0]);
+        }
+      }
+    }
+    return [...new Set(keys)];
+  }
+
+  values() {
+    let values = [];
+    for (let idx of this.keyMap) {
+      if (idx) {
+        for (let pair of idx) {
+          values.push(pair[1]);
+        }
+      }
+    }
+    return [...new Set(values)];
+  }
 }
 
 // example hash function
