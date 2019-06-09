@@ -134,3 +134,28 @@ class PriorityQueue {
     }
   }
 }
+
+// {
+//   A: [{ node: "B", weight: 4 }, { node: "C", weight: 2 }],
+//       B: [{ node: "A", weight: 4 }, { node: "E", weight: 3 }],
+//       C: [
+//         { node: "A", weight: 2 },
+//         { node: "D", weight: 2 },
+//         { node: "F", weight: 4 }
+//       ],
+//       D: [
+//         { node: "C", weight: 2 },
+//         { node: "E", weight: 3 },
+//         { node: "F", weight: 1 }
+//       ],
+//       E: [
+//         { node: "D", weight: 3 },
+//         { node: "F", weight: 1 },
+//         { node: "B", weight: 3 }
+//       ],
+//       F: [
+//         { node: "E", weight: 1 },
+//         { node: "D", weight: 1 },
+//         { node: "C", weight: 4 }
+//       ]
+//     }
