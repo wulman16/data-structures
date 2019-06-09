@@ -5,6 +5,7 @@ const fibonacci = n => {
   return fibonacci(n - 1) + fibonacci(n - 2);
 };
 
+// Time complexity: O(n) :)
 const dynamicFibonacci = n => {
   let memo = {};
   const fib = n => {
