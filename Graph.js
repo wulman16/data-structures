@@ -14,14 +14,7 @@
 // lacks error handling
 class Graph {
   constructor() {
-    this.adjacencyList = {
-      A: ["B", "C"],
-      B: ["A", "D"],
-      C: ["A", "E"],
-      D: ["B", "E", "F"],
-      E: ["C", "D", "F"],
-      F: ["D", "E"]
-    };
+    this.adjacencyList = {};
   }
 
   // Time complexity: O(1)
@@ -105,6 +98,3 @@ class Graph {
     return results;
   }
 }
-
-let g = new Graph();
-console.log(g.BFSIterative("A"));
