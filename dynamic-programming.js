@@ -6,7 +6,7 @@ const fibonacci = n => {
 };
 
 // Time complexity: O(n) :)
-const dynamicFibonacci = n => {
+const memoizedFibonacci = n => {
   let memo = {};
   const fib = n => {
     if (memo[n]) return memo[n];
@@ -15,4 +15,13 @@ const dynamicFibonacci = n => {
     return memo[n];
   };
   return fib(n);
+};
+
+const tabulatedFibonacci = n => {
+  if (n <= 2) return 1;
+  let fibNums = [0, 1, 1];
+  for (let i = 3; i <= n; i++) {
+    fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+  }
+  return fibNums[n];
 };
