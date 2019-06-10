@@ -13,6 +13,7 @@ class WeightedGraph {
   }
 
   // find the shortest path between two given vertices
+  // Time complexity: O(|V|^2)
   dijkstrasAlgorithm(startVertex, endVertex) {
     const nodes = new PriorityQueue();
     const distances = {};
