@@ -60,16 +60,10 @@ class MaxBinaryHeap {
       )
         break;
       if (leftVal > rightVal) {
-        [this.values[recentIdx], this.values[leftIdx]] = [
-          this.values[leftIdx],
-          this.values[recentIdx]
-        ];
+        swap(arr, recentIdx, leftIdx);
         recentIdx = leftIdx;
       } else {
-        [this.values[recentIdx], this.values[rightIdx]] = [
-          this.values[rightIdx],
-          this.values[recentIdx]
-        ];
+        swap(arr, recentIdx, rightIdx);
         recentIdx = rightIdx;
       }
       leftIdx = recentIdx * 2 + 1;
