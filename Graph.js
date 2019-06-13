@@ -18,28 +18,6 @@ class Graph {
     this.adjacencyList = {};
   }
 
-  iterativeDFS(startVertex) {
-    const results = [];
-    const visited = {};
-    let stack = [startVertex];
-    let currentVertex;
-    while (stack.length > 0) {
-      currentVertex = stack.pop();
-      if (!visited[currentVertex]) {
-        visited[currentVertex] = true;
-        results.push(currentVertex);
-        stack = stack.concat(this.adjacencyList[currentVertex]);
-      }
-    }
-    return results;
-  }
-}
-
-class Graph {
-  constructor() {
-    this.adjacencyList = {};
-  }
-
   // Time complexity: O(1)
   addVertex(vertex) {
     if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
