@@ -12,6 +12,29 @@
 
 // undirected, unweighted graph
 // lacks error handling
+
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  iterativeDFS(startVertex) {
+    const results = [];
+    const visited = {};
+    const stack = [startVertex];
+    let currentVertex;
+    while (stack.length > 0) {
+      currentVertex = stack.pop();
+      if (!visited[currentVertex]) {
+        visited[currentVertex] = true;
+        results.push(currentVertex);
+        stack = stack.concat(this.adjacencyList[currentVertex]);
+      }
+    }
+    return results;
+  }
+}
+
 class Graph {
   constructor() {
     this.adjacencyList = {};
@@ -46,6 +69,7 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
+  // Time complexity: O(|V| + |E|)
   DFSRecursive(startVertex) {
     let results = [];
     let visited = {};
@@ -63,6 +87,7 @@ class Graph {
     return results;
   }
 
+  // Time complexity: O(|V| + |E|)
   DFSIterative(startVertex) {
     const results = [];
     // store the vertices in a stack (last in, first out)
@@ -81,6 +106,7 @@ class Graph {
     return results;
   }
 
+  // Time complexity: O(|V| + |E|)
   BFSIterative(startVertex) {
     const results = [];
     // store the vertices in a queue (first in, first out)
