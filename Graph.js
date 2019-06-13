@@ -21,7 +21,7 @@ class Graph {
   iterativeDFS(startVertex) {
     const results = [];
     const visited = {};
-    const stack = [startVertex];
+    let stack = [startVertex];
     let currentVertex;
     while (stack.length > 0) {
       currentVertex = stack.pop();
