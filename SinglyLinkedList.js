@@ -66,13 +66,9 @@ class SinglyLinkedList {
   // Time complexity: O(1)
   unshift(val) {
     const newHead = new Node(val);
-    if (!this.head) {
-      this.head = newHead;
-      this.tail = newHead;
-    } else {
-      newHead.next = this.head;
-      this.head = newHead;
-    }
+    // Account for empty SLL
+    this.head ? (newHead.next = this.head) : (this.tail = newHead);
+    this.head = newHead;
     this.length++;
     return this;
   }
