@@ -49,17 +49,17 @@ class DoublyLinkedList {
   // Time complexity: O(1)
   shift() {
     if (this.length === 0) return;
-    const shifted = this.head;
+    const oldHead = this.head;
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
     } else {
-      this.head = shifted.next;
+      this.head = oldHead.next;
       this.head.prev = null;
-      shifted.next = null;
+      oldHead.next = null;
     }
     this.length--;
-    return shifted;
+    return oldHead;
   }
 
   // Time complexity: O(1)
