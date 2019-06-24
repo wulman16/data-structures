@@ -28,24 +28,21 @@ class SinglyLinkedList {
 
   // Time complexity: O(n)
   pop() {
-    if (!this.head) {
-      return;
-    } else if (this.length === 1) {
-      currentNode = this.head;
+    if (this.length === 0) return;
+    const oldTail = this.tail;
+    if (this.length === 1) {
       this.head = null;
       this.tail = null;
-      this.length--;
-      return currentNode;
+    } else {
+      let currentNode = this.head;
+      for (let i = 1; i < this.length - 1; i++) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = null;
+      this.tail = currentNode;
     }
-    let currentNode = this.head;
-    for (let i = 1; i < this.length - 1; i++) {
-      currentNode = currentNode.next;
-    }
-    let lastNode = currentNode.next;
-    currentNode.next = null;
-    this.tail = currentNode;
     this.length--;
-    return lastNode;
+    return oldTail;
   }
 
   // Time complexity: O(1)
