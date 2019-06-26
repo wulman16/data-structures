@@ -5,6 +5,16 @@ class Node {
     this.children = {};
     this.isEndOfWord = false;
   }
+
+  getWord() {
+    let output = [];
+    let node = this;
+    while (node !== null) {
+      output.push(node.val);
+      node = node.parent;
+    }
+    return output.reverse().join(``);
+  }
 }
 
 class Trie {
@@ -37,5 +47,28 @@ class Trie {
       }
     }
     return node.isEndOfWord;
+  }
+
+  find(prefix) {
+    let node = this.root;
+    let output = [];
+
+    for (let char of prefix) {
+      if (node.children[char]) {
+        node = node.children[char];
+      } else {
+        return output;
+      }
+    }
+
+    this.findAllWords(node, output);
+    return output;
+  }
+
+  findAllWords(node, arr) {
+    if (node.isEndOfWord) arr.push(node.getWord());
+    for (let child in node.children) {
+      this.findAllWords(node.children[child], arr);
+    }
   }
 }
