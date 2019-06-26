@@ -22,7 +22,7 @@ class Trie {
     this.root = new Node(null);
   }
 
-  add(word) {
+  addWord(word) {
     let node = this.root;
     for (let char of word) {
       if (node.children[char]) {
@@ -37,7 +37,7 @@ class Trie {
     node.isEndOfWord = true;
   }
 
-  contains(word) {
+  containsWord(word) {
     let node = this.root;
     for (let char of word) {
       if (node.children[char]) {
@@ -49,7 +49,7 @@ class Trie {
     return node.isEndOfWord;
   }
 
-  find(prefix) {
+  findWords(prefix) {
     let node = this.root;
     let output = [];
 
