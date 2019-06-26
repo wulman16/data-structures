@@ -3,7 +3,7 @@ class Node {
     this.val = val;
     this.parent = null;
     this.children = {};
-    this.isWord = false;
+    this.isEndOfWord = false;
   }
 }
 
@@ -24,6 +24,18 @@ class Trie {
         node = newNode;
       }
     }
-    node.isWord = true;
+    node.isEndOfWord = true;
+  }
+
+  contains(word) {
+    let node = this.root;
+    for (let char of word) {
+      if (node.children[char]) {
+        node = node.children[char];
+      } else {
+        return false;
+      }
+    }
+    return node.isEndOfWord;
   }
 }
