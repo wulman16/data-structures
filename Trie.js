@@ -6,6 +6,7 @@ class Node {
     this.isEndOfWord = false;
   }
 
+  // Time complexity: O(k)
   getWord() {
     let output = [];
     let node = this;
@@ -22,6 +23,7 @@ class Trie {
     this.root = new Node(null);
   }
 
+  // Time complexity: O(k)
   addWord(word) {
     let node = this.root;
     for (let char of word) {
@@ -37,6 +39,7 @@ class Trie {
     node.isEndOfWord = true;
   }
 
+  // Time complexity: O(k)
   containsWord(word) {
     let node = this.root;
     for (let char of word) {
@@ -49,7 +52,9 @@ class Trie {
     return node.isEndOfWord;
   }
 
-  findWords(prefix) {
+  // Time complexity: O(p + n), where p is prefix length
+  // and n is the number of child paths
+  find(prefix) {
     let node = this.root;
     let output = [];
 
