@@ -2,7 +2,7 @@ class Node {
   constructor(val) {
     this.val = val;
     this.children = {};
-    this.end = false;
+    this.isWord = false;
   }
 }
 
@@ -11,21 +11,17 @@ class Trie {
     this.root = new Node(null);
   }
 
-  // add(word) {
-  //   let node = this;
-  //   for (let letter of word) {
-  //     if (node.children[letter]) {
-  //       node = node.children[letter];
-  //     } else {
-  //       const newTrie = new Trie(letter);
-  //       node.children[letter] = newTrie;
-  //       node = newTrie;
-  //     }
-  //   }
-  //   node.isWord = true;
-  // }
+  add(word) {
+    let node = this.root;
+    for (let char of word) {
+      if (node.children[char]) {
+        node = node.children[char];
+      } else {
+        const newNode = new Node(char);
+        node.children[char] = newNode;
+        node = newNode;
+      }
+    }
+    node.isWord = true;
+  }
 }
-
-const trie = new Trie(`b`);
-trie.add(`bob`);
-console.log(trie);
