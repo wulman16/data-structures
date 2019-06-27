@@ -80,7 +80,7 @@ class DoublyLinkedList {
   get(idx) {
     if (idx < 0 || idx >= this.length) return null;
     let currentNode;
-    if (this.length - idx > idx) {
+    if (idx < this.length / 2) {
       currentNode = this.head;
       for (let i = 0; i < idx; i++) {
         currentNode = currentNode.next;
