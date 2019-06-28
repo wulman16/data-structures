@@ -54,7 +54,7 @@ class Trie {
 
   // Time complexity: O(p + n), where p is prefix length
   // and n is the number of child paths
-  find(prefix) {
+  findWords(prefix) {
     let node = this.root;
     let output = [];
 
