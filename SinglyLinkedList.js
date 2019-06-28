@@ -14,15 +14,10 @@ class SinglyLinkedList {
 
   // Time complexity: O(1)
   push(val) {
-    const newNode = new Node(val);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
-      this.tail.next = newNode;
-      this.tail = newNode;
-    }
-    this.length++;
+    const newTail = new Node(val);
+    this.length === 0 ? (this.head = newTail) : (this.tail.next = newTail);
+    this.tail = newTail;
+    this.length--;
     return this;
   }
 
