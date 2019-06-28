@@ -7,7 +7,7 @@ const fibonacci = n => {
 
 // Time complexity: O(n) :)
 const memoizedFibonacci = n => {
-  let memo = {};
+  const memo = {};
   const fib = n => {
     if (memo[n]) return memo[n];
     if (n <= 2) return 1;
