@@ -55,25 +55,19 @@ class Trie {
   // Time complexity: O(p + n), where p is prefix length
   // and n is the number of child paths
   findWords(prefix) {
+    const result = [];
     let node = this.root;
-    let output = [];
-
     for (let char of prefix) {
-      if (node.children[char]) {
-        node = node.children[char];
-      } else {
-        return output;
+      if (node.children[char]) node = node.children[char];
+      else return result;
+    }
+    const traverse = node => {
+      if (node.isEndOfWord) result.push(node.getWord());
+      for (let child in node.children) {
+        traverse(node.children[child]);
       }
-    }
-
-    this.findAllWords(node, output);
-    return output;
-  }
-
-  findAllWords(node, arr) {
-    if (node.isEndOfWord) arr.push(node.getWord());
-    for (let child in node.children) {
-      this.findAllWords(node.children[child], arr);
-    }
+    };
+    traverse(node);
+    return result;
   }
 }
