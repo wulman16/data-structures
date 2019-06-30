@@ -17,7 +17,7 @@ class SinglyLinkedList {
     const newTail = new Node(val);
     this.length === 0 ? (this.head = newTail) : (this.tail.next = newTail);
     this.tail = newTail;
-    this.length--;
+    this.length++;
     return this;
   }
 
