@@ -16,12 +16,10 @@ class DoublyLinkedList {
   // Time complexity: O(1)
   push(val) {
     const newTail = new Node(val);
-    if (this.length === 0) {
-      this.head = newTail;
-    } else {
-      const oldTail = this.tail;
-      oldTail.next = newTail;
-      newTail.prev = oldTail;
+    if (this.length === 0) this.head = newTail;
+    else {
+      this.tail.next = newTail;
+      newTail.prev = this.tail;
     }
     this.tail = newTail;
     this.length++;
