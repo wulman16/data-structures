@@ -44,16 +44,16 @@ class SinglyLinkedList {
   shift() {
     if (this.length === 0) return;
     const oldHead = this.head;
+    if (this.length === 1) this.tail = null;
     this.head = this.head.next;
     this.length--;
-    if (this.length === 0) this.tail = null;
     return oldHead;
   }
 
   // Time complexity: O(1)
   unshift(val) {
     const newHead = new Node(val);
-    this.head ? (newHead.next = this.head) : (this.tail = newHead);
+    this.length === 0 ? (this.tail = newHead) : (newHead.next = this.head);
     this.head = newHead;
     this.length++;
     return this;
@@ -61,9 +61,7 @@ class SinglyLinkedList {
 
   // Time complexity: O(n)
   get(idx) {
-    if (idx < 0 || idx >= this.length) {
-      return null;
-    }
+    if (idx < 0 || idx >= this.length) return;
     let currentNode = this.head;
     for (let i = 1; i <= idx; i++) {
       currentNode = currentNode.next;
