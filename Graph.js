@@ -31,10 +31,10 @@ class Graph {
 
   // Time complexity: O(|E|)
   removeEdge(vertex1, vertex2) {
-    this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(v => {
+    this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter((v) => {
       return v !== vertex2;
     });
-    this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(v => {
+    this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter((v) => {
       return v !== vertex1;
     });
   }
@@ -51,7 +51,7 @@ class Graph {
   DFSRecursive(startVertex) {
     let results = [];
     let visited = {};
-    const DFS = vertex => {
+    const DFS = (vertex) => {
       if (this.adjacencyList[vertex].length === 0) return;
       results.push(vertex);
       visited[vertex] = true;

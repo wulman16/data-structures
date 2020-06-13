@@ -61,7 +61,7 @@ class Trie {
       if (node.children[char]) node = node.children[char];
       else return result;
     }
-    const traverse = node => {
+    const traverse = (node) => {
       if (node.isEndOfWord) result.push(node.getWord());
       for (let child in node.children) {
         traverse(node.children[child]);

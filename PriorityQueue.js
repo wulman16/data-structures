@@ -20,7 +20,7 @@ class PriorityQueue {
       if (this.values[parentIdx].priority <= newNode.priority) break;
       [this.values[parentIdx], this.values[idx]] = [
         this.values[idx],
-        this.values[parentIdx]
+        this.values[parentIdx],
       ];
       idx = parentIdx;
       parentIdx = Math.floor((idx - 1) / 2);
