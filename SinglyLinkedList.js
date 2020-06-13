@@ -42,17 +42,12 @@ class SinglyLinkedList {
 
   // Time complexity: O(1)
   shift() {
-    if (!this.head) {
-      return;
-    } else {
-      const oldHead = this.head;
-      this.head = this.head.next;
-      this.length--;
-      if (this.length === 0) {
-        this.tail = null;
-      }
-      return oldHead;
-    }
+    if (this.length === 0) return;
+    const oldHead = this.head;
+    this.head = this.head.next;
+    this.length--;
+    if (this.length === 0) this.tail = null;
+    return oldHead;
   }
 
   // Time complexity: O(1)
