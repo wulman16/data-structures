@@ -28,20 +28,18 @@ class DoublyLinkedList {
 
   // Time complexity: O(1)
   pop() {
-    if (this.length === 0) {
-      return;
-    }
-    const popped = this.tail;
+    if (this.length === 0) return;
+    const oldTail = this.tail;
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
     } else {
-      this.tail = popped.prev;
+      this.tail = oldTail.prev;
       this.tail.next = null;
-      popped.prev = null;
+      oldTail.prev = null;
     }
     this.length--;
-    return popped;
+    return oldTail;
   }
 
   // Time complexity: O(1)
@@ -141,5 +139,48 @@ class DoublyLinkedList {
       this.length--;
       return removedNode;
     }
+  }
+}
+
+class Node {
+  constructor(val) {
+    this.prev = null;
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class DLL {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  push(val) {
+    const newTail = new Node(val);
+    if (this.length === 0) this.head = newTail;
+    else {
+      this.tail.next = newTail;
+      newTail.prev = this.tail;
+    }
+    this.tail = newTail;
+    this.length++;
+    return this;
+  }
+
+  pop() {
+    if (this.length === 0) return;
+    const oldTail = this.tail;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = oldTail.prev;
+      this.tail.next = null;
+      oldTail.prev = null;
+    }
+    this.length--;
+    return oldTail;
   }
 }
