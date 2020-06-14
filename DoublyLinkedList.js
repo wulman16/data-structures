@@ -61,9 +61,8 @@ class DoublyLinkedList {
   // Time complexity: O(1)
   unshift(val) {
     const newHead = new Node(val);
-    if (!this.head) {
-      this.tail = newHead;
-    } else {
+    if (this.length === 0) this.tail = newHead;
+    else {
       this.head.prev = newHead;
       newHead.next = this.head;
     }
