@@ -73,7 +73,7 @@ class DoublyLinkedList {
 
   // Time complexity: O(n)
   get(idx) {
-    if (idx < 0 || idx >= this.length) return null;
+    if (idx < 0 || idx >= this.length) return;
     let currentNode;
     if (idx < this.length / 2) {
       currentNode = this.head;
