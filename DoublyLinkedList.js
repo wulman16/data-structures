@@ -118,23 +118,22 @@ class DoublyLinkedList {
 
   // Time complexity: O(n)
   remove(idx) {
-    if (idx === 0) return this.shift();
-    if (idx === this.length - 1) return this.pop();
+    if (idx === 0) return !!this.shift();
+    if (idx === this.length - 1) return !!this.pop();
+
     const removedNode = this.get(idx);
-    if (!removedNode) {
-      return;
-    } else {
-      const prevNode = removedNode.prev;
-      const nextNode = removedNode.next;
+    if (!removedNode) return false;
 
-      removedNode.prev = null;
-      removedNode.next = null;
+    const prevNode = removedNode.prev;
+    const nextNode = removedNode.next;
 
-      prevNode.next = nextNode;
-      nextNode.prev = prevNode;
+    removedNode.prev = null;
+    removedNode.next = null;
 
-      this.length--;
-      return removedNode;
-    }
+    prevNode.next = nextNode;
+    nextNode.prev = prevNode;
+
+    this.length--;
+    return removedNode;
   }
 }
