@@ -101,11 +101,11 @@ class SinglyLinkedList {
     if (idx === 0) return !!this.shift();
 
     const prevNode = this.get(idx - 1);
-    const removed = prevNode.next;
-    prevNode.next = removed.next;
-    removed.next = null;
+    const removedNode = prevNode.next;
+    prevNode.next = removedNode.next;
+    removedNode.next = null;
     this.length--;
-    return removed;
+    return removedNode;
   }
 
   // Time complexity: O(n)
