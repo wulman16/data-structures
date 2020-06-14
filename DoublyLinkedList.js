@@ -92,12 +92,11 @@ class DoublyLinkedList {
   // Time complexity: O(n)
   set(idx, val) {
     const desiredNode = this.get(idx);
-    if (!desiredNode) {
-      return false;
-    } else {
+    if (desiredNode) {
       desiredNode.val = val;
       return true;
     }
+    return false;
   }
 
   // Time complexity: O(n)
