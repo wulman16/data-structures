@@ -63,7 +63,7 @@ class SinglyLinkedList {
   get(idx) {
     if (idx < 0 || idx >= this.length) return;
     let currentNode = this.head;
-    for (let i = 1; i <= idx; i++) {
+    for (let i = 0; i < idx; i++) {
       currentNode = currentNode.next;
     }
     return currentNode;
