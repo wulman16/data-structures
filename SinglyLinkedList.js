@@ -46,6 +46,7 @@ class SinglyLinkedList {
     const oldHead = this.head;
     if (this.length === 1) this.tail = null;
     this.head = this.head.next;
+    oldHead.next = null;
     this.length--;
     return oldHead;
   }

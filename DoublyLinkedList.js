@@ -137,3 +137,34 @@ class DoublyLinkedList {
     return removedNode;
   }
 }
+
+class Node {
+  constructor(val) {
+    this.prev = null;
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class DLL {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  shift() {
+    if (this.length === 0) return;
+    const oldHead = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = oldHead.next;
+      oldHead.next = null;
+      this.head.prev = null;
+    }
+    this.length--;
+    return oldHead;
+  }
+}
