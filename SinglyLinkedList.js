@@ -98,8 +98,8 @@ class SinglyLinkedList {
   // Time complexity: O(1) at beginning, O(n) otherwise
   remove(idx) {
     if (idx < 0 || idx >= this.length) return false;
-    if (idx === this.length - 1) return !!this.pop();
-    if (idx === 0) return !!this.shift();
+    if (idx === this.length - 1) return this.pop();
+    if (idx === 0) return this.shift();
 
     const prevNode = this.get(idx - 1);
     const removedNode = prevNode.next;
