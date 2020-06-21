@@ -9,15 +9,16 @@ class MaxBinaryHeap {
 
   // Time complexity: O(log(n))
   insert(val) {
+    const swap = (arr, i, j) => {
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    };
+
     this.values.push(val);
     let valIdx = this.values.length - 1;
     let parentIdx = Math.floor((valIdx - 1) / 2);
     while (valIdx > 0) {
       if (val < this.values[parentIdx]) break;
-      [this.values[parentIdx], this.values[valIdx]] = [
-        this.values[valIdx],
-        this.values[parentIdx],
-      ];
+      swap(this.values, parentIdx, valIdx);
       valIdx = parentIdx;
       parentIdx = Math.floor((valIdx - 1) / 2);
     }
