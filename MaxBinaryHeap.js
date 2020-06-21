@@ -55,7 +55,7 @@ class MaxBinaryHeap {
       }
       if (
         this.values[recentIdx] > this.values[leftIdx] &&
-        this.values[recentIdx] > this.vlaues[rightIdx]
+        this.values[recentIdx] > this.values[rightIdx]
       )
         break;
       if (leftVal > rightVal) {
