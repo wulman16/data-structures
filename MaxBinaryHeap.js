@@ -28,9 +28,7 @@ class MaxBinaryHeap {
   // Time complexity: O(log(n))
   extractMax() {
     const swap = (arr, i, j) => {
-      const temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     };
 
     if (this.values.length === 0) return null;
