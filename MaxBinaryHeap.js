@@ -46,9 +46,8 @@ class MaxBinaryHeap {
 
     while (leftVal) {
       if (!rightVal) {
-        if (this.values[recentIdx] > leftVal) {
-          break;
-        } else {
+        if (this.values[recentIdx] > leftVal) break;
+        else {
           swap(this.values, recentIdx, leftIdx);
           break;
         }
