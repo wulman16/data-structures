@@ -81,7 +81,7 @@ class Graph {
   // Time complexity: O(|V| + |E|)
   BFSIterative(startVertex) {
     const result = [];
-    const visited = [];
+    const visited = {};
     const queue = [startVertex];
     while (queue.length > 0) {
       let vertex = queue.shift();
