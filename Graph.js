@@ -67,16 +67,14 @@ class Graph {
   DFSIterative(startVertex) {
     const results = [];
     // store the vertices in a stack (last in, first out)
-    let stack = [startVertex];
+    const stack = [startVertex];
     const visited = {};
-    visited[startVertex] = true;
-    let vertex;
     while (stack.length > 0) {
-      vertex = stack.pop();
+      let vertex = stack.pop();
       if (!visited[vertex]) {
         results.push(vertex);
         visited[vertex] = true;
-        stack = stack.concat(this.adjacencyList[vertex]);
+        stack.push(...this.adjacencyList[vertex]);
       }
     }
     return results;
