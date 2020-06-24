@@ -49,20 +49,18 @@ class Graph {
 
   // Time complexity: O(|V| + |E|)
   DFSRecursive(startVertex) {
-    let results = [];
-    let visited = {};
-    const DFS = (vertex) => {
+    const result = [];
+    const visited = {};
+    const traverse = (vertex) => {
       if (this.adjacencyList[vertex].length === 0) return;
-      results.push(vertex);
+      result.push(vertex);
       visited[vertex] = true;
       for (let neighbor of this.adjacencyList[vertex]) {
-        if (!visited[neighbor]) {
-          DFS(neighbor);
-        }
+        if (!visited[neighbor]) traverse(neighbor);
       }
     };
-    DFS(startVertex);
-    return results;
+    traverse(startVertex);
+    return result;
   }
 
   // Time complexity: O(|V| + |E|)
