@@ -65,36 +65,33 @@ class Graph {
 
   // Time complexity: O(|V| + |E|)
   DFSIterative(startVertex) {
-    const results = [];
-    // store the vertices in a stack (last in, first out)
-    const stack = [startVertex];
+    const result = [];
     const visited = {};
+    const stack = [startVertex];
     while (stack.length > 0) {
       let vertex = stack.pop();
-      if (!visited[vertex]) {
-        results.push(vertex);
-        visited[vertex] = true;
-        stack.push(...this.adjacencyList[vertex]);
+      result.push(vertex);
+      visited[vertex] = true;
+      for (let neighbor of this.adjacencyList[vertex]) {
+        if (!visited[neighbor]) stack.push(neighbor);
       }
     }
-    return results;
+    return result;
   }
 
   // Time complexity: O(|V| + |E|)
   BFSIterative(startVertex) {
-    const results = [];
-    // store the vertices in a queue (first in, first out)
-    let queue = [startVertex];
-    const visited = {};
-    let vertex;
+    const result = [];
+    const visited = [];
+    const queue = [startVertex];
     while (queue.length > 0) {
-      vertex = queue.shift();
-      if (!visited[vertex]) {
-        results.push(vertex);
-        visited[vertex] = true;
-        queue = queue.concat(this.adjacencyList[vertex]);
+      let vertex = queue.shift();
+      result.push(vertex);
+      visited[vertex] = true;
+      for (let neighbor of this.adjacencyList[vertex]) {
+        if (!visited[neighbor]) queue.push(neighbor);
       }
     }
-    return results;
+    return result;
   }
 }
