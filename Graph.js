@@ -52,7 +52,6 @@ class Graph {
     const result = [];
     const visited = {};
     const traverse = (vertex) => {
-      if (this.adjacencyList[vertex].length === 0) return;
       result.push(vertex);
       visited[vertex] = true;
       for (let neighbor of this.adjacencyList[vertex]) {
