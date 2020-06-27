@@ -14,13 +14,15 @@ class MaxBinaryHeap {
     };
 
     this.values.push(val);
-    let valIdx = this.values.length - 1;
-    let parentIdx = Math.floor((valIdx - 1) / 2);
-    while (valIdx > 0) {
-      if (this.values[parentIdx] > val) break;
-      swap(this.values, parentIdx, valIdx);
-      valIdx = parentIdx;
-      parentIdx = Math.floor((valIdx - 1) / 2);
+    let idx = this.values.length - 1;
+    let parentIdx = Math.floor((idx - 1) / 2);
+    while (idx > 0) {
+      if (this.values[parentIdx] > idx) break;
+      else {
+        swap(this.values, parentIdx, idx);
+        idx = parentIdx;
+        parentIdx = Math.floor((idx - 1) / 2);
+      }
     }
     return this;
   }
