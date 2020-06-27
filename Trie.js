@@ -8,13 +8,13 @@ class Node {
 
   // Time complexity: O(k)
   getWord() {
-    let output = [];
+    const chars = [];
     let node = this;
-    while (node !== null) {
-      output.push(node.val);
+    while (node) {
+      chars.push(node.val);
       node = node.parent;
     }
-    return output.reverse().join(``);
+    return chars.reverse().join("");
   }
 }
 
