@@ -43,11 +43,8 @@ class Trie {
   containsWord(word) {
     let node = this.root;
     for (let char of word) {
-      if (node.children[char]) {
-        node = node.children[char];
-      } else {
-        return false;
-      }
+      if (node.children[char]) node = node.children[char];
+      else return false;
     }
     return node.isEndOfWord;
   }
