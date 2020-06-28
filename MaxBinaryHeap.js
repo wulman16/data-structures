@@ -17,7 +17,7 @@ class MaxBinaryHeap {
     let idx = this.values.length - 1;
     let parentIdx = Math.floor((idx - 1) / 2);
     while (idx > 0) {
-      if (this.values[parentIdx] > idx) break;
+      if (this.values[parentIdx] > val) break;
       else {
         swap(this.values, parentIdx, idx);
         idx = parentIdx;
