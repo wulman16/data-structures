@@ -80,7 +80,7 @@ class SinglyLinkedList {
     return false;
   }
 
-  // Time complexity: O(1)
+  // Time complexity: O(1) at beginning, O(n) otherwise
   insert(idx, val) {
     if (idx < 0 || idx > this.length) return false;
     if (idx === this.length) return !!this.push(val);
