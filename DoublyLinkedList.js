@@ -101,19 +101,21 @@ class DoublyLinkedList {
 
   // Time complexity: O(n)
   insert(idx, val) {
-    if (idx === 0) return !!this.unshift(val);
-    if (idx === this.length) return !!this.push(val);
-
-    const currentNode = this.get(idx);
-    if (!currentNode) return false;
+    if (idx < 0 || idx > this.length) return;
+    if (idx === 0) return this.unshift(val);
+    if (idx === this.length) return this.push(val);
 
     const newNode = new Node(val);
-    newNode.prev = currentNode.prev;
-    newNode.next = currentNode;
-    currentNode.prev.next = newNode;
-    currentNode.prev = newNode;
+    const prevNode = this.get(idx - 1);
+    const nextNode = prevNode.next;
+
+    prevNode.next = newNode;
+    newNode.prev = prevNode;
+    newNode.next = nextNode;
+    nextNode.prev = newNode;
+
     this.length++;
-    return true;
+    return this;
   }
 
   // Time complexity: O(n)
