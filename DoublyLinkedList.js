@@ -62,10 +62,8 @@ class DoublyLinkedList {
   unshift(val) {
     const newHead = new Node(val);
     if (this.length === 0) this.tail = newHead;
-    else {
-      this.head.prev = newHead;
-      newHead.next = this.head;
-    }
+    else this.head.prev = newHead;
+    newHead.next = this.head;
     this.head = newHead;
     this.length++;
     return this;
