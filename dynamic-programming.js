@@ -18,9 +18,11 @@ const memoizedFibonacci = (n) => {
 };
 
 const tabulatedFibonacci = (n) => {
-  let fibNums = [0, 1, 1];
+  if (n <= 2) return 1;
+  let a = 1;
+  let b = 1;
   for (let i = 3; i <= n; i++) {
-    fibNums[i] = fibNums[i - 2] + fibNums[i - 1];
+    [a, b] = [b, a + b];
   }
-  return fibNums[n];
+  return b;
 };
